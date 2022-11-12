@@ -29,7 +29,6 @@ Data Science, Machine Learning, Deep Learning, AI, Data Engineering
 Web Applcation
 Game Development
 
-
 Q5. What are variable and how can we declare them?
 
 Variables are a storage object which holds the data which can be used in the program
@@ -81,24 +80,28 @@ Q15. What is difference between / and // operators?
 Q16. Write a code that gives following as an output.
 ```
 iNeuroniNeuroniNeuroniNeuron
-```
+
 print(4 * 'iNeuron')
+
+```
 
 Q17. Write a code to take a number as an input from the user and check if the number is odd or even.
 
+```
 number = int(input())
 
 if number % 2 == 0:
 	print("even")
 else:
 	print("odd")
-
+```
 
 Q18. What are boolean operator?
 
 The logical operators and, or and not are also referred to as boolean operators. While and as well as or operator needs two operands, which may evaluate to true or false, not operator needs one operand evaluating to true or false. Boolean and operator returns true if both operands return true
 
 Q19. What will the output of the following?
+
 ```
 1 or 0 --> 1
 
@@ -121,6 +124,7 @@ else --> to return/ print a statement or value when all the if and elif is faile
 
 Q22. Write a code to take the age of person as an input and if age >= 18 display "I can vote". If age is < 18 display "I can't vote".
 
+```
 age = int(input())
 
 if age >= 18:
@@ -129,11 +133,12 @@ elif age < 18:
     print("I can't vote")
 else:
     print("Invalid input")
+```
 
 Q23. Write a code that displays the sum of all the even numbers from the given list.
 ```
 numbers = [12, 75, 150, 180, 145, 525, 50]
-```
+
 sum = 0
 
 for i in numbers:
@@ -142,11 +147,14 @@ for i in numbers:
         sum += i
 
 print(sum)
+```
 
 Q24. Write a code to take 3 numbers as an input from the user and display the greatest no as output.
 
+```
 a, b, c = input().split()
 print(max(int(a), int(b), int(c)))
+```
 
 Q25. Write a program to display only those numbers from a list that satisfy the following conditions
 
