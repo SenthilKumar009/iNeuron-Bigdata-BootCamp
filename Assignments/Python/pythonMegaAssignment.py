@@ -128,12 +128,18 @@ print("\'iNeuron's Big Data Course\'")
 # Q35. How can you create a list in Python?
 # 
 # Q36. How can we access the elements in a list?
-# 
+
+lst = [1,2,3,4,5]
+print(lst[1])
+print(lst[1:2])
+
 # Q37. Write a code to access the word "iNeuron" from the given list.
 # ```
-# lst = [1,2,3,"Hi",[45,54, "iNeuron"], "Big Data"]
+lst = [1,2,3,"Hi",[45,54, "iNeuron"], "Big Data"]
 # ``` 
-# 
+
+print(lst[4][2])
+
 # Q38. Take a list as an input from the user and find the length of the list.
 # 
 # Q39. Add the word "Big" in the 3rd index of the given list.

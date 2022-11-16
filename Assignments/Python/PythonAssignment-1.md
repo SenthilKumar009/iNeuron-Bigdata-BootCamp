@@ -243,3 +243,20 @@ lst = [] --> empty list
 lst = [1,2,3] --> numeric list
 lst = ['a', 'bc', 'd'] --> string list
 lst = ['abc', 'xyz', 1] --> alphanumeric list
+
+Q36. How can we access the elements in a list?
+
+we can access the list using index.
+
+```
+    lst = [1,2,3,4,5]
+    print(lst[1])
+    print(lst[1:2])
+```
+
+Q37. Write a code to access the word "iNeuron" from the given list.
+```
+    lst = [1,2,3,"Hi",[45,54, "iNeuron"], "Big Data"]
+    print(lst[4][2])
+
+``` 
