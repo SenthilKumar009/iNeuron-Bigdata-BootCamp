@@ -26,7 +26,7 @@ Cons:
 Q4. In what all domains can we use Python?
 
 Data Science, Machine Learning, Deep Learning, AI, Data Engineering
-Web Applcation
+Web Application
 Game Development
 
 Q5. What are variable and how can we declare them?
@@ -45,7 +45,7 @@ Default datatype of input() is string.
 
 Q8. What is type casting?
 
-type casting is coverting a variable from one datatype to another datatype.
+type casting is converting a variable from one datatype to another datatype.
 
 Q9. Can we take more than one input from the user using single input() function? If yes, how? If no, why?
 
@@ -61,7 +61,7 @@ Q11. Can we use keywords as a variable? Support your answer with reason.
 
 No we cant. Keywords are system defined objects which cant be use by the user as variable name and function name.
 
-Q12. What is indentation? What's the use of indentaion in Python?
+Q12. What is indentation? What's the use of indentation in Python?
 
 Indentation refers to the spaces at the beginning of a code line. Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important. Python uses indentation to indicate a block of code.
 
@@ -171,3 +171,75 @@ for i in numbers:
         print(i)
 ```
  
+Q26. What is a string? How can we declare string in Python?
+
+String is a data type in python to store a array a of alpha numeric elements in a variable.
+a = 'string data type'
+b = "python"
+
+Q27. How can we access the string using its index?
+
+We can access the string index by using square bracket and specifying the the position like below.
+
+```
+    python = "python:
+    print(python[2]) -> returns t
+
+```
+
+Q28. Write a code to get the desired output of the following
+```
+    string = "Big Data iNeuron"
+    desired_output = "iNeuron"
+
+
+    value  = "Big Data iNeuron"
+    print(value.split()[-1])
+```
+
+Q29. Write a code to get the desired output of the following
+```
+    string = "Big Data iNeuron"
+    desired_output = "norueNi"
+
+    value  = "Big Data iNeuron"
+    print(value.split()[-1][::-1])
+```
+
+Q30. Reverse the string given in the above question.
+
+```
+    print(value[::-1])
+    print(value.split()[::-1])
+```
+
+Q31. How can you delete entire string at once?
+
+Using 'del' command we can delete the entire string in python. Generally it will drop the variable which holds the string value.
+
+Q32. What is escape sequence?
+
+Escape sequence is special key which doesn't print anything however it helps to align the output based on the user requirement.
+Ex: \n - new line
+    \b - backspace
+    \t - tab
+
+Q33. How can you print the below string?
+```
+    'iNeuron's Big Data Course'
+    
+    print("\'iNeuron's Big Data Course\'")
+```
+
+Q34. What is a list in Python?
+
+List is one of the key data structure in python which hold any type of data in it.
+List  is a collection which is ordered and changeable. Allows duplicate members.
+
+Q35. How can you create a list in Python?
+
+List can be created in python using [].
+lst = [] --> empty list
+lst = [1,2,3] --> numeric list
+lst = ['a', 'bc', 'd'] --> string list
+lst = ['abc', 'xyz', 1] --> alphanumeric list
