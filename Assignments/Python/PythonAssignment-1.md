@@ -260,3 +260,59 @@ Q37. Write a code to access the word "iNeuron" from the given list.
     print(lst[4][2])
 
 ``` 
+
+Q38. Take a list as an input from the user and find the length of the list.
+```
+    print("Enter the list of numbers separated by ','")
+
+    lst = input().split(',')    
+    print(len(lst))
+```
+
+Q39. Add the word "Big" in the 3rd index of the given list.
+```
+    lst = ["Welcome", "to", "Data", "course"]
+    lst.insert(2,'Big')
+    print(lst)
+
+```
+Q40. What is a tuple? How is it different from list? 
+
+Tuple is a collection of objects separated by commas. Same like list but tuples are immutable.
+Tuple is denoted by ()
+Tuple consumes less memory compare to list.
+Insertion and deletion is not allowed in Tuple, allowed in List
+
+Q41. How can you create a tuple in Python?
+```
+    tuple = (1,2,3,5)
+    print(tuple)
+```
+
+Q42. Create a tuple and try to add your name in the tuple. Are you able to do it? Support your answer with reason.
+```
+    name = ()
+    name[0] = 'SKK'
+    print(name)
+
+It throws an error since the tuple is immutable.
+```
+
+Q43. Can two tuple be appended. If yes, write a code for it. If not, why?
+
+append method is not available in tuple. so we can concatenate two tuples and extend it.
+
+```
+    number1 = (1,2,3)
+    number2 = (3,4,5)
+    num = number1 + number2
+    print(num)
+
+```
+
+Q44. Take a tuple as an input and print the count of elements in it.
+```
+    print(len(num))
+
+```
+

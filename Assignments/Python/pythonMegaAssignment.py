@@ -141,22 +141,53 @@ lst = [1,2,3,"Hi",[45,54, "iNeuron"], "Big Data"]
 print(lst[4][2])
 
 # Q38. Take a list as an input from the user and find the length of the list.
-# 
+
+print("Enter the list of numbers separated by ','")
+
+lst = input().split(',')
+print(len(lst))
+
 # Q39. Add the word "Big" in the 3rd index of the given list.
 # ```
-# lst = ["Welcome", "to", "Data", "course"]
+lst = ["Welcome", "to", "Data", "course"]
+lst.insert(2,'Big')
+
+print(lst)
+
 # ```
 # 
 # Q40. What is a tuple? How is it different from list?
 # 
 # Q41. How can you create a tuple in Python?
-# 
+tuple = (1,2,3,5)
+
+print(tuple)
+
 # Q42. Create a tuple and try to add your name in the tuple. Are you able to do it? Support your answer with reason.
+
+name = ()
+
+#name[0] = 'SKK'
+print(name)
+
 # 
 # Q43. Can two tuple be appended. If yes, write a code for it. If not, why?
 # 
+
+number1 = (1,2,3)
+number2 = (3,4,5)
+
+num = number1 + number2
+
+print(num)
+
+#
+
 # Q44. Take a tuple as an input and print the count of elements in it.
 # 
+
+print(len(num))
+
 # Q45. What are sets in Python?
 # 
 # Q46. How can you create a set?
