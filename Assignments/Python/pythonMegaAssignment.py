@@ -189,15 +189,31 @@ print(num)
 print(len(num))
 
 # Q45. What are sets in Python?
-# 
+
 # Q46. How can you create a set?
-# 
+
+set_var = {1,2,3,5,5}
+print(set_var)
+
+my_list = [1,2,3,4,5,6,7,8,9,9]
+
+my_set = set(my_list)
+print(my_set)
+
+ 
 # Q47. Create a set and add "iNeuron" in your set.
-# 
+
+my_set = set({})
+my_set.add("iNeuron")
+print(my_set)
+
 # Q48. Try to add multiple values using add() function.
-# 
+
+my_set.update([1,2])
+print(my_set)
+
 # Q49. How is update() different from add()?
-# 
+
 # Q50. What is clear() in sets?
 # 
 # Q51. What is frozen set?
@@ -205,41 +221,109 @@ print(len(num))
 # Q52. How is frozen set different from set?
 # 
 # Q53. What is union() in sets? Explain via code.
-# 
+
+set1 = {1,2,3,4,5}
+set2 = {3,4,5,6,7}
+
+new_set = set1.union(set2)
+
+print(new_set)
+
 # Q54. What is intersection() in sets? Explain via code.
-# 
-# Q55. What is dictionary ibn Python?
+
+new_set = set1.intersection(set2)
+print(new_set)
+
+# Q55. What is dictionary in Python?
 # 
 # Q56. How is dictionary different from all other data structures.
 # 
-# Q57. How can we delare a dictionary in Python?
+# Q57. How can we declare a dictionary in Python?
 # 
 # Q58. What will the output of the following?
 # ```
-# var = {}
-# print(type(var))
+var = {}
+print(type(var))
+
 # ```
 # 
 # Q59. How can we add an element in a dictionary?
-# 
+
+myDict = {}
+
+myDict[0] = 'SKK'
+myDict[1] = 'Data Engineer'
+myDict[2] = 'Texas, USA'
+
+print(myDict)
+
+Dict = {'Dict1': {1: 'Geeks'},
+        'Dict2': {'Name': 'For'}}
+  
+# Accessing element using key
+print(Dict['Dict1'])
+print(Dict['Dict1'][1])
+print(Dict['Dict2']['Name'])
+
+ 
 # Q60. Create a dictionary and access all the values in that dictionary.
-# 
+
+myDict = {'Name': 'Senthil Kumar Kanagaraj',
+          'Age': '24',
+          'Gender': 'Male',
+          'City': 'Texas',
+          'Country': 'USA',
+          'Occupation': 'Data Engineer',
+          'Company': 'Tesla'
+}
+for i in myDict:
+    print(i +":" + myDict[i])
+
 # Q61. Create a nested dictionary and access all the element in the inner dictionary.
-# 
+
+myData = {
+    'Name': 'Senthil Kumar Kanagaraj',
+    'Languages' : {'good': 'python', 'better':'sql'},
+    'age': 31
+}
+
+print(myData['Languages']['good'])
+
+
 # Q62. What is the use of get() function?
-# 
+
+# get() method in python is help to get the value of the key which passed inside get()
+print(myData.get('Name'))
+
 # Q63. What is the use of items() function?
-# 
+
+# items() to read both key and value from the dictionary
+print(myData.items())
+
 # Q64. What is the use of pop() function?
-# 
-# Q65. What is the use of popitems() function?
-# 
+
+# pop() used to remove the specified item in pop() from the dictionary.
+
+#print(myData)
+#myData.pop("age")
+#print(myData)
+
+# Q65. What is the use of popitem() function?
+
+# popitem() remove the last item from the dictionary.
+#print(myData.popitem())
+
 # Q66. What is the use of keys() function?
-# 
+#  to list out all the keys from the dictionary we can use keys()
+
+print(myDict.keys())
+
 # Q67. What is the use of values() function?
-# 
+# To list out the values from the dictionary we can use values() 
+print(myDict.values())
+
 # Q68. What are loops in Python?
-# 
+ 
 # Q69. How many type of loop are there in Python?
 # 
 # Q70. What is the difference between for and while loops?

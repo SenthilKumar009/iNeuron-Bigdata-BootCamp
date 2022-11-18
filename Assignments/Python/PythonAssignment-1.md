@@ -315,4 +315,161 @@ Q44. Take a tuple as an input and print the count of elements in it.
     print(len(num))
 
 ```
+Q45. What are sets in Python?
+
+Sets are collections of unique object in Python. 
+Sets wont have duplicate values
+Sets are not ordered.
+Sets wont support indexing and ordering
+
+Q46. How can you create a set?
+
+set_var = {1,2,3,5,5}
+print(set_var)
+
+my_list = [1,2,3,4,5,6,7,8,9,9]
+
+my_set = set(my_list)
+print(my_set)
+
+
+Q47. Create a set and add "iNeuron" in your set.
+
+my_set = set({})
+my_set.add("iNeuron")
+print(my_set)
+
+
+Q48. Try to add multiple values using add() function.
+
+```
+    my_set.update([1,2])
+    print(my_set)
+```
+
+Q49. How is update() different from add()?
+
+add() - helps to add a single item to the set. it will add anywhere in the set.
+update() - helps to add multiple items to the set. it will add the sequential order.
+           list, tuple, sets can be added to the set using update()
+
+Q50. What is clear() in sets?
+
+clear() - to clear the elements from the set variable. it makes sets empty but not delete
+
+Q51. What is frozen set?
+Q52. How is frozen set different from set?
+
+Frozenset is similar to set in Python, except that frozensets are immutable, which implies that once generated, 
+elements from the frozenset cannot be added or removed. This function accepts any iterable object as input and transforms it into an immutable object.
+
+Q53. What is union() in sets? Explain via code.
+
+union() in Sets combine the two or more different sets() and eliminate the duplicate.
+```
+    set1 = {1,2,3,4,5}
+    set2 = {3,4,5,6,7}
+    new_set = set1.union(set2)
+    print(new_set)
+```
+
+Q54. What is intersection() in sets? Explain via code.
+
+intersection() - to return the common elements between the two sets.
+
+```
+    new_set = set1.intersection(set2)
+    print(new_set)
+```
+ 
+Q55. What is dictionary ibn Python?
+
+dictionary used to store key values pair object in the variable.
+Dictionary is ordered, changeable
+Dictionary does not allow duplicates 
+ 
+Q56. How is dictionary different from all other data structures.
+ 
+Q57. How can we declare a dictionary in Python?
+
+Unlike the other DataTypes, which are capable of holding only a single value in the form of an element, a Dictionary is capable of holding the key:value pair. In a Dictionary, a colon separates all the key-value pairs from each other, while a comma separates all the keys from each other.
+
+Q58. What will the output of the following?
+```
+    var = {}
+    print(type(var))
+
+    returns - <class 'dict'>
+```
+
+Q60. Create a dictionary and access all the values in that dictionary.
+
+```
+    myDict = {'Name': 'Senthil Kumar Kanagaraj',
+              'Age': '24',
+              'Gender': 'Male',
+              'City': 'Texas',
+              'Country': 'USA',
+              'Occupation': 'Data Engineer',
+              'Company': 'Tesla'
+            }
+    for i in myDict:
+        print(i +":" + myDict[i])
+```
+Q61. Create a nested dictionary and access all the element in the inner dictionary.
+
+```
+myData = {
+    'Name': 'Senthil Kumar Kanagaraj',
+    'Languages' : {'good': 'python', 'better':'sql'},
+    'age': 31
+}
+
+print(myData['Languages']['good'])
+
+```
+
+Q62. What is the use of get() function?
+
+get() method in python is help to get the value of the key which passed inside get()
+```
+    print(myData.get('Name'))
+```
+
+Q63. What is the use of items() function?
+
+items() to read both key and value from the dictionary
+```
+    print(myData.items())
+```
+
+Q64. What is the use of pop() function?
+
+pop() used to remove the specified item in pop() from the dictionary.
+```
+    print(myData)
+    myData.pop("age")
+    print(myData)
+```
+
+Q65. What is the use of popitem() function?
+
+popitem() remove the last item from the dictionary.
+```
+    print(myData.popitem())
+```
+
+Q66. What is the use of keys() function?
+To list out all the keys from the dictionary we can use keys()
+```
+    print(myDict.keys())
+```
+
+Q67. What is the use of values() function?
+To list out the values from the dictionary we can use values() 
+```
+    print(myDict.values())
+```
+
+
 
