@@ -550,44 +550,76 @@
 
 # Q91. Write a Python program to merge two dictionary.
 
-def Merge(dict1, dict2):
-    return(dict2.update(dict1))
+#def Merge(dict1, dict2):
+#    return(dict2.update(dict1))
  
  
 # Driver code
-dict1 = {'a': 10, 'b': 8}
-dict2 = {'d': 6, 'c': 4}
+#dict1 = {'a': 10, 'b': 8}
+#dict2 = {'d': 6, 'c': 4}
  
 # This returns None
-print(Merge(dict1, dict2))
+#print(Merge(dict1, dict2))
  
 # changes made in dict2
-print(dict2)
+#print(dict2)
 
 # Q92. Write a Python program to convert a list of tuples into dictionary.
 # ```
 # Input : [('Sachin', 10), ('MSD', 7), ('Kohli', 18), ('Rohit', 45)]
 # Output : {'Sachin': 10, 'MSD': 7, 'Kohli': 18, 'Rohit': 45}
 # ```
-# 
+
+#def Convert(tup, di):
+#    di = dict(tup)
+#    return di
+      
+# Driver Code 
+#tups = [('Sachin', 10), ('MSD', 7), ('Kohli', 18), ('Rohit', 45)]
+#dictionary = {}
+#print (Convert(tups, dictionary))
+
 # Q93. Write a Python program to create a list of tuples from given list having number and its cube in each tuple.
 # ```
 # Input: list = [9, 5, 6]
 # Output: [(9, 729), (5, 125), (6, 216)]
 # ```
-# 
+#lst = [9, 5, 6]
+
+#result_list = [(val, pow(val, 3)) for val in lst]
+#print(result_list)
+
+
 # Q94. Write a Python program to get all combinations of 2 tuples.
 # ```
 # Input : test_tuple1 = (7, 2), test_tuple2 = (7, 8)
 # Output : [(7, 7), (7, 8), (2, 7), (2, 8), (7, 7), (7, 2), (8, 7), (8, 2)]
 # ```
-# 
+
+#test_tuple1 = (7, 2)
+#test_tuple2 = (7, 8)
+
+#result_list = [(tup1, tup2) for tup1 in test_tuple1 for tup2 in test_tuple2]
+
+#result_list = result_list + [(tup1, tup2) for tup1 in test_tuple2 for tup2 in test_tuple1]
+
+#print(result_list)
+
 # Q95. Write a Python program to sort a list of tuples by second item.
 # ```
 # Input : [('for', 24), ('Geeks', 8), ('Geeks', 30)] 
 # Output : [('Geeks', 8), ('for', 24), ('Geeks', 30)]
 # ```
-# 
+#tuple = [('for', 24), ('Geeks', 8), ('Geeks', 30)]
+#print("Original Tuple List :" ,tuple)
+
+#def Sort(tuple): 
+    # Sorts in Ascending order 
+#    tuple.sort(key = lambda a: a[1]) 
+#    return tuple 
+
+#print("Sorted Tuple List:" ,Sort(tuple))
+
 # Q96. Write a python program to print below pattern.
 # ```
 # * 
@@ -596,6 +628,11 @@ print(dict2)
 # * * * * 
 # * * * * * 
 # ```
+
+#n = int(input())
+#for i in range(n):
+#    print('*' * i)
+
 # Q97. Write a python program to print below pattern.
 # ```
 #     *
@@ -604,7 +641,13 @@ print(dict2)
 #  ****
 # *****
 # ```
-# 
+
+#n = int(input())
+#for i in range(n+1):
+#    print(' '*(n-i) + '*'* (i+1))
+
+
+
 # Q98. Write a python program to print below pattern.
 # ```
 #     * 
@@ -613,7 +656,14 @@ print(dict2)
 #  * * * * 
 # * * * * * 
 # ```
-# 
+
+n = int(input())
+
+for i in range(n+1):
+    print(' '*(n-i) + '* '* (i+1))
+
+
+
 # Q99. Write a python program to print below pattern.
 # ```
 # 1 
@@ -622,7 +672,13 @@ print(dict2)
 # 1 2 3 4 
 # 1 2 3 4 5
 # ```
-# 
+#n = int(input())
+#for i in range(1,n):
+#    for j in range(1,i+1):
+#        print(j, end=' ')
+#    print('\n')
+
+
 # Q100. Write a python program to print below pattern.
 # ```
 # A 
@@ -631,3 +687,11 @@ print(dict2)
 # D D D D 
 # E E E E E 
 # ```
+#val = 65
+
+#n = int(input())
+#for i in range(n):
+#    for j in range(i+1):
+#        print(chr(val), end=' ')
+#    val+=1
+#    print('\n')
