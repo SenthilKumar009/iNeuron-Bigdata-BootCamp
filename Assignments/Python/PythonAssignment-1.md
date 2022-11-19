@@ -1,4 +1,4 @@
-## Assignment Part-1
+## Python Assignment  Part-1 and Mega Assignment
 Q1. Why do we call Python as a general purpose and high-level programming language?
 
 Because they are not written in machine-readable language, Python programs need to be processed before machines can run them. 
