@@ -470,6 +470,289 @@ To list out the values from the dictionary we can use values()
 ```
     print(myDict.values())
 ```
+Q68. What are loops in Python?
+
+Loops in python to iterate the collection of object which are stored a variable.
+
+Q69. How many type of loop are there in Python?
+
+Two types of loops in Python.
+For
+While
+
+Q70. What is the difference between for and while loops?
+
+for loop iterate over the range of elements and perform the operations
+While loop perform some action if the condition flag is true
+
+Q71. What is the use of continue statement?
+
+The continue keyword is used to end the current iteration in a for loop (or a while loop), and continues to the next iteration
+
+Q72. What is the use of break statement?
+
+Python break is used to terminate the execution of the loop.
+
+Q73. What is the use of pass statement?
+
+Pass statement does not do anything, it just consider that the current step of the execution is correct.
+
+Q74. What is the use of range() function?
+
+range() function is to generate the sequence of number between the start and end number given excluding the end number.
+by default it takes from  0 if we given only one number in it.
+
+Q75. How can you loop over a dictionary?
+ 1. using key
+ 2. using .items()
+ 3. using .keys()
+ 4. using .values()
+
+Q76. Write a Python program to find the factorial of a given number.
+
+```
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print("Enter the Number:")
+number = int(input())
+print(factorial(number))
+```
+
+Q77. Write a Python program to calculate the simple interest. Formula to calculate simple interest is SI = (P*R*T)/100
+
+```
+def SI(P,R,T):
+    return (P * R * T) / 100
+
+print("Enter the principal:")
+P = int(input())
+print("Enter the rate of interest:")
+R = float(input())
+print("Enter the terms(in year):")
+T = int(input())
+
+print(SI(P,R,T))
+```
+
+Q78. Write a Python program to calculate the compound interest. Formula of compound interest is A = P(1+ R/100)^t.
+
+```
+def A(P,R,t):
+    return P * (R/100)**t
+
+print(A(P,R,T))
+```
+
+Q79. Write a Python program to check if a number is prime or not.
+```
+def isPrime(n):
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    
+    for i in range(2,int(n**0.5)+1,2):
+        if n % i == 0:
+            return False
+        else:
+            return True
+
+    return True
+
+number = int(input())
+print(isPrime(number))
+```
+
+Q80. Write a Python program to check Armstrong Number.
+```
+def isArmstrong(n):
+
+    sum = 0
+
+    if n == 0:
+        return True
+    else:
+        while n > 0:
+            rem = n // 2
+            sum += pow(rem, 3)
+            n = n % 2
+    
+    return sum
+
+
+number = int(input())
+if number == isArmstrong:
+    print(f'The Number {number} is Armstrong Number')
+else:
+    print(f'The Number {number} is not Armstrong Number')
+```
+Q81. Write a Python program to find the n-th Fibonacci Number.
+
+```
+# Function for nth Fibonacci number
+def Fibonacci(n):
+   
+   # print incorrect input
+    if n < 0:
+        print("Incorrect input")
+
+   # Check if n is 0
+   # then it will return 0
+    elif n == 0:
+        return 0
+
+   # Check if n is 1,2
+   # it will return 1
+    elif n == 1 or n == 2:
+        return 1
+
+    else:
+        return Fibonacci(n-1) + Fibonacci(n-2)
+ 
+# Driver Program
+print(Fibonacci(9))
+```
+
+Q82. Write a Python program to interchange the first and last element in a list.
+```
+my_list = [1, 2, 3, 4, 5]
+
+print(my_list)
+
+temp = my_list[len(my_list)-1]
+my_list[len(my_list)-1] = my_list[0]
+my_list[0] = temp
+
+ print(my_list)
+```
+
+Q83. Write a Python program to swap two elements in a list.
+```
+my_list = [1, 2, 3, 4, 5]
+
+pos1, pos2 = input().split()
+print(my_list)
+temp = my_list[int(pos1)-1]
+my_list[int(pos1)-1] = my_list[int(pos2)-1]
+my_list[int(pos2)-1] = temp
+
+print(my_list)
+```
+Q84. Write a Python program to find N largest element from a list.
+```
+my_list = [1, 2, 3, 4, 5]
+
+my_list.sort(reverse=True)
+print(my_list)
+
+print("Enter the nth Big number to find")
+nth = int(input())
+print(my_list[nth-1])
+```
+Q85. Write a Python program to find cumulative sum of a list.
+```
+my_list = [1, 2, 3, 4, 5]
+sum = 0
+
+for i in my_list:
+    sum = sum + i
+
+print(sum)
+```
+Q86. Write a Python program to check if a string is palindrome or not.
+```
+def isPalindrome(s):
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+poly = input()
+print(isPalindrome(poly))
+```
+
+Q87. Write a Python program to remove i'th element from a string.
+```
+myStr = 'Big data Ccourse'
+
+new_str = myStr.replace('c', '')
+print(new_str)
+```
+
+Q88. Write a Python program to check if a substring is present in a given string.
+```
+my_sentence = "Senthil is a Big Data Engineer"
+
+my_list = my_sentence.split(' ')
+print(my_list)
+
+find = input()
+print(find)
+
+if find in my_list:    
+    print(f'{find} is present in the sentence')
+else:
+    print(f'{find} is not present in the sentence')
+```
+
+Q89. Write a Python program to find words which are greater than given length k.
+```
+my_sentence = "Senthil is a Big Data Engineer"
+
+word_len = int(input())
+my_list = my_sentence.split(' ')
+count = 0
+
+for word in my_list:
+    if len(word) > word_len:
+        count+=1
+
+print(count)
+```
+
+Q90. Write a Python program to extract unique dictionary values.
+```
+dict1 = {'A' : [1, 3, 5, 4],
+         'B' : [4, 6, 8, 10],
+         'C' : [6, 12, 4 ,8],
+         'D' : [5, 7, 2]}
+print("The original dictionary is : " ,dict1)
+  
+# Using list comprehension, values() and sorted()
+res = list(sorted({ele for val in dict1.values() for ele in val}))
+  
+# print result 
+print("The unique values list is : " , res) 
+```
+Q91. Write a Python program to merge two dictionary.
+```
+def Merge(dict1, dict2):
+    return(dict2.update(dict1))
+ 
+ 
+# Driver code
+dict1 = {'a': 10, 'b': 8}
+dict2 = {'d': 6, 'c': 4}
+ 
+# This returns None
+print(Merge(dict1, dict2))
+ 
+# changes made in dict2
+print(dict2)
+```
+
+
+
+
+
+
+
+
+
 
 
 
