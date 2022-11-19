@@ -66,9 +66,11 @@ Q12. What is indentation? What's the use of indentation in Python?
 Indentation refers to the spaces at the beginning of a code line. Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important. Python uses indentation to indicate a block of code.
 
 Q13. How can we throw some output in Python?
+
 Using print() statement.
 
 Q14. What are operators in Python?
+
 Operators are special charectors which do one specific operation on the given variables.
 
 Q15. What is difference between / and // operators?
