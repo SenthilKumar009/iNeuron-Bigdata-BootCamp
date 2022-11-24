@@ -1,15 +1,49 @@
 ## Python OOP Assignment
-Q1. What is the purpose of Python&#39;s OOP?
+Q1. What is the purpose of Python's OOP?
+
+* OOP is programming model to use the real world entities like abstraction, encapsulation, inheritance and polymorphism.
+* Using the OOP one can create an application, where the data can't be accessed by other code. 
 
 Q2. Where does an inheritance search look for an attribute?
 
+-> It will follow the left to right approach
+-> First it will look into the instance object then class object. at the end it will look after all the super classes
+
 Q3. How do you distinguish between a class object and an instance object?
+
+--> Instance object is work only for the created object.
+
+class Exam:
+    School = 'XYZ'
+    def __init__(self, fname, lname, result):
+        pass
+
+Exam e1, e2 --> two different entity with different properties
+
+--> Class object works as a common object for all the instances created from the class
+School - common across all the objects.
 
 Q4. What makes the first argument in a class’s method function special?
 
+ @classmethod
+    def set_raise_amt(cls, amount):
+        cls.riase_amount = amount
+
+cls - represent the class itself
+
 Q5. What is the purpose of the __init__ method?
 
+__init__() - act like a constructor and do the initialization process when the object creates.
+
 Q6. What is the process for creating a class instance?
+
+Super class name should be defined inside the subclass.
+
+class Emp:
+    pass
+class Dec(Emp):
+    pass
+
 
 Q7. What is the process for creating a class?
 
