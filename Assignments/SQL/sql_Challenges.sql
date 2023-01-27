@@ -102,4 +102,77 @@ where city not like '%a' or city not like '%e' or city not like '%i' or city not
 
 -- Q16. Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates
 
+-- Create Product Table
+
+drop table if exists product;
+
+create table product(
+	product_id INT,
+	product_name VARCHAR,
+	unit_price INT,
+	primary key (product_id)
+);
+
+drop table if exists sales;
+
+create table sales(
+	seller_id INT,
+	product_id INT,
+	buyer_id INT,
+	sale_date date,
+	quantity INT,
+	price INT,
+	foreign key(product_id) references product(product_id)
+);
+
+insert into product values (1, 'S8', 1000),
+						   (2, 'G4', 800),
+						   (3, 'iPhone', 1400);
+
+select * from product;
+
+insert into sales values
+(1, 1, 1, '2019-01-21', 2, 2000),
+(1, 2, 2, '2019-02-17', 1, 800),
+(2, 2, 3, '2019-06-02', 1, 800),
+(3, 3, 4, '2019-05-13', 2, 2800);
+
+select * from sales;
+
+-- Q17. Write an SQL query that reports the products that were only sold in the first quarter of 2019. That is,
+--      between 2019-01-01 and 2019-03-31 inclusive
+
+select * from product p
+join sales s
+on p.product_id = s.product_id
+where sale_date >= '2019-01-01' and sale_date <= '2019-03-31';
+
+-- Create Author table
+
+drop table if exists authors;
+
+create table authors(
+	article_id int,
+	author_id int,
+	viewer_id int,
+	view_date date
+);
+
+insert into authors values
+(1, 3, 5, '2019-08-01'),
+(1, 3, 6, '2019-08-02'),
+(2, 7, 7, '2019-08-01'),
+(2, 7, 6, '2019-08-02'),
+(4, 7, 1, '2019-07-22'),
+(3, 4, 4, '2019-07-21'),
+(3, 4, 4, '2019-07-21')
+
+select * from authors;
+
+-- Q18. Write an SQL query to find all the authors that viewed at least one of their own articles.
+--      Return the result table sorted by id in ascending order
+select distinct author_id
+from authors
+where author_id = viewer_id
+
 
