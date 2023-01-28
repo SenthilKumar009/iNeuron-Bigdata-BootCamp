@@ -175,4 +175,74 @@ select distinct author_id
 from authors
 where author_id = viewer_id
 
+-- Create delivery table
 
+drop table if exists delivery;
+
+create table delivery(
+	delivery_id int,
+	customer_id int,
+	order_date date,
+	customer_pref_delivery_date date,
+	primary key (delivery_id)
+);
+
+insert into delivery values
+(1, 1, '2019-08-01', '2019-08-02'),
+(2, 5, '2019-08-02', '2019-08-02'),
+(3, 1, '2019-08-11', '2019-08-11'),
+(4, 3, '2019-08-24', '2019-08-26'),
+(5, 4, '2019-08-21', '2019-08-22'),
+(6, 2, '2019-08-11', '2019-08-13');
+ 
+select * from delivery;
+
+-- Q18: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places
+
+with order_calc as
+(select count(case when order_date = customer_pref_delivery_date then 1 end) * 1.0 immediate_order_count, count(*)*1.0 total_order,
+	cast(count(case when order_date = customer_pref_delivery_date then 1 end) as float) / cast(count(*) as float) order_pct
+ from delivery
+)
+select round((immediate_order_count/ total_order),2) from order_calc;
+
+
+-- Ad table creation
+
+drop table if exists ads;
+
+create table if not exists ads(
+	ad_id int,
+	user_id int,
+	action VARCHAR
+);
+
+insert into ads values
+(1, 1, 'Clicked'),
+(2, 2, 'Clicked'),
+(3, 3, 'Viewed'),
+(5, 5, 'Ignored'),
+(1, 7, 'Ignored'),
+(2, 7, 'Viewed'),
+(3, 5, 'Clicked'),
+(1, 4, 'Viewed'),
+(2, 11, 'Viewed'),
+(1, 2, 'Clicked');
+
+select * from ads;
+
+-- Q19. Write an SQL query to find the ctr of each Ad. Round ctr to two decimal points.
+--		Return the result table ordered by ctr in descending order and by ad_id in ascending order in case of a tie.
+
+with count_data as
+(select 
+	count(case when action = 'Clicked' then 1 end) as clicked_count,
+	count(case when action = 'Viewed' then 1 end) as viewed_count,
+	count(case when action = 'Ignored' then 1 end) as ignored_count,
+	count(*) as total_count
+ from ads
+)
+select (clicked_count*1.0)/ (total_count * 1.0) * 100 as clicked_cnt_pct,
+	   (viewed_count*1.0)/ (total_count * 1.0) * 100 as viewed_cnt_pct,
+	   (ignored_count*1.0)/ (total_count * 1.0) * 100 as ignored_cnt_pct
+from count_data;
