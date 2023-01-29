@@ -197,14 +197,14 @@ insert into delivery values
  
 select * from delivery;
 
--- Q18: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places
+-- Q19: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places
 
 with order_calc as
 (select count(case when order_date = customer_pref_delivery_date then 1 end) * 1.0 immediate_order_count, count(*)*1.0 total_order,
 	cast(count(case when order_date = customer_pref_delivery_date then 1 end) as float) / cast(count(*) as float) order_pct
  from delivery
 )
-select round((immediate_order_count/ total_order),2) from order_calc;
+select round((immediate_order_count/ total_order),2) as immediate_order_pct from order_calc;
 
 
 -- Ad table creation
@@ -231,18 +231,35 @@ insert into ads values
 
 select * from ads;
 
--- Q19. Write an SQL query to find the ctr of each Ad. Round ctr to two decimal points.
+-- Q20. Write an SQL query to find the ctr of each Ad. Round ctr to two decimal points.
 --		Return the result table ordered by ctr in descending order and by ad_id in ascending order in case of a tie.
-
-with count_data as
-(select 
-	count(case when action = 'Clicked' then 1 end) as clicked_count,
-	count(case when action = 'Viewed' then 1 end) as viewed_count,
-	count(case when action = 'Ignored' then 1 end) as ignored_count,
-	count(*) as total_count
- from ads
+with action_data as
+(
+ (select ad_id, action, count(*) action_count
+  from ads
+  where action = 'Clicked'
+  group by ad_id, action
+ )
+ union
+ (select ad_id, action, count(*) action_count
+  from ads
+  where action = 'Viewed'
+  group by ad_id, action
+ )
+ union
+ (select ad_id, action, count(*) action_count
+  from ads
+  where action = 'Ignored' and ad_id not in (select ad_id from ads where action = 'Clicked' or action = 'Viewed')
+  group by ad_id, action
+ )
 )
-select (clicked_count*1.0)/ (total_count * 1.0) * 100 as clicked_cnt_pct,
-	   (viewed_count*1.0)/ (total_count * 1.0) * 100 as viewed_cnt_pct,
-	   (ignored_count*1.0)/ (total_count * 1.0) * 100 as ignored_cnt_pct
-from count_data;
+select ad_id,
+	   case when action = 'Clicked' or action = 'Viewed' then 
+	   			 (select sum(action_count) from action_data where action = 'Clicked' group by action)/
+				 ((select sum(action_count) from action_data where action = 'Clicked' group by action) +
+				  (select sum(action_count) from action_data where action = 'Viewed' group by action)) * 100
+		    else 0
+	   end ctr_pct
+from action_data
+
+-- 
