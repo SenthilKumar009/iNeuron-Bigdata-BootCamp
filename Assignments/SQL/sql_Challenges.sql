@@ -262,4 +262,132 @@ select ad_id,
 	   end ctr_pct
 from action_data
 
--- 
+-- Q21. Write an SQL query to find the team size of each of the employees. Return result table in any order.
+
+-- Create Table:
+create table if not exists employee(
+	employee_id int,
+	team_id int
+);
+
+insert into employee values
+(1, 8),
+(2, 8),
+(3, 8),
+(4, 7),
+(5, 9),
+(6, 9);
+
+select * from employee;
+
+-- Solution:
+WITH team_size as
+(
+	Select team_id, count(team_id) total_count
+	from employee
+	group by team_id
+)
+select e.employee_id, t.total_count team_size from employee e
+join team_size t 
+on e.team_id = t.team_id
+
+'''
+Q22. Write an SQL query to find the type of weather in each country for November 2019.
+The type of weather is:
+	● Cold if the average weather_state is less than or equal 15,
+	● Hot if the average weather_state is greater than or equal to 25, and
+	● Warm otherwise.
+
+Return result table in any order.
+'''
+
+-- Create Table:
+drop table countries;
+
+create table if not exists countries(
+	country_id int,
+	country_name varchar,
+	primary key (country_id)
+);
+drop table weather;
+
+create table if not exists weather(
+	country_id int,
+	weather_state int,
+	day date,
+	primary key (country_id, day)
+);
+
+insert into countries values
+(2, 'USA'),(3, 'Australia'),(7, 'Peru'),(5, 'China'),(8, 'Morocco'),(9, 'Spain')
+
+insert into weather values
+(2, 15, '2019-11-01'),(2, 12, '2019-10-28'),(2, 12, '2019-10-27'),(3, -2, '2019-11-10'),
+(3, 0, '2019-11-11'),(3, 3, '2019-11-12'),(5, 16, '2019-11-07'),
+(5, 18, '2019-11-09'),(5, 21, '2019-11-23'),(7, 25, '2019-11-28'),(7, 22, '2019-12-01'),
+(7, 20, '2019-12-02'),(8, 25, '2019-11-05'),(8, 27, '2019-11-15'),
+(8, 31, '2019-11-25'),(9, 7, '2019-10-23'),(9, 3, '2019-12-23')
+
+select * from countries;
+
+select c.country_name, 
+	   case when avg(weather_state) <= 15 then 'Cold'
+	   		when avg(weather_state) >= 25 then 'Hot'
+			else 'Warm'
+	   end as weather_type
+from weather w
+join countries c
+on c.country_id = w.country_id
+where day >= '2019-11-01' and day <= '2019-11-30'
+group by c.country_id;
+
+-- Q23. Write an SQL query to find the average selling price for each product. average_price should be rounded to 2 decimal places.
+
+-- Create tables
+
+drop table prices;
+
+create table if not exists Prices(
+	product_id int,
+	start_date date,
+	end_date date,
+	price int,
+	primary key (product_id, start_date, end_date)
+);
+
+create table if not exists unitsold(
+	product_id int,
+	purchase_date date,
+	units int
+);
+
+
+insert into Prices values
+(1, '2019-02-17', '2019-02-28', 5), (1, '2019-03-01', '2019-03-22', 20),(2, '2019-02-01', '2019-02-20', 15),(2, '2019-02-21', '2019-03-31', 30)
+
+insert into unitsold values
+(1, '2019-02-25', 100),(1, '2019-03-01', 15),(2, '2019-02-10', 200),(2, '2019-03-22', 30)
+
+select * from unitsold;
+select * from prices;
+
+select p.product_id,
+	   case when u.purchase_date >= p.start_date and u.purchase_date <= p.end_date then
+	   			 p.price * u,units
+			when 
+from prices p
+join unitsold u
+on p.product_id = u.product_id
+
+
+
+
+
+
+
+
+
+
+
+
+
