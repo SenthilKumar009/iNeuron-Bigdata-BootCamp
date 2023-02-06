@@ -408,7 +408,14 @@ group by player_id
 order by player_id;
 
 
+-- Q25. Write an SQL query to report the device that is first logged in for each player. Return the result table in any order
 
+select player_id, device_id
+from activity
+where event_date in
+(select min(event_date) first_login
+ from activity
+ group by player_id)
 
 
 
