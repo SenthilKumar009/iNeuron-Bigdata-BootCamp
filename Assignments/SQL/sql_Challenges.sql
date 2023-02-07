@@ -417,7 +417,7 @@ where event_date in
  from activity
  group by player_id)
 
-
+-- Q26.
 
 
 
