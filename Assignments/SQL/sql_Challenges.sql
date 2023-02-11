@@ -469,6 +469,33 @@ where order_date > '2020-02-01' and order_date < '2020-02-28'
 group by p.product_name
 having sum(unit) >= 100;
 
+'''
+Q27. Write an SQL query to find the users who have valid emails.
+A valid e-mail has a prefix name and a domain where: 
+● The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.', and/or dash '-'. 
+● The prefix name must start with a letter.
+● The domain is '@leetcode.com'.
+'''
 
+-- Create Tables:
 
+drop table if not exists users;
 
+create table if not exists users(
+	user_id int,
+	name varchar,
+	mail varchar
+);
+
+-- Data load:
+
+insert into users values
+(1, 'Winston', 'winston@leetcode.com'),
+(2, 'Jonathan', 'jonathanisgreat'),
+(3, 'Annabelle', 'bella-@leetcode.com'),
+(4, 'Sally', 'sally.come@leetcode.com'),
+(5, 'Marwan', 'quarz#2020@leetcode.com'),
+(6, 'David', 'david69@gmail.com'),
+(7, 'Shapiro', '.shapo@leetcode.com');
+
+select * from users;
