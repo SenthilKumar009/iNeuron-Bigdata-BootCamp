@@ -417,9 +417,57 @@ where event_date in
  from activity
  group by player_id)
 
--- Q26.
+-- Q26. Write an SQL query to get the names of products that have at least 100 units ordered in February 2020 and their amount.
+
+-- Create Tables
+
+drop table if exists products;
+
+create table if not exists products(
+	product_id int,
+	product_name varchar,
+	product_category varchar
+);
+
+create table if not exists prders(
+	product_id int,
+	order_date date,
+	unit int
+);
 
 
+-- Data Load:
+insert into products values
+(1, 'Leetcode Solutions', 'Book'),
+(2, 'Jewels of Stringology', 'Book'),
+(3, 'HP', 'Laptop'),
+(4, 'Lenovo', 'Laptop'),
+(5, 'Leetcode', 'Kit T-shirt')
+
+insert into prders values
+(1, '2020-02-05', 60),
+(1, '2020-02-10', 70),
+(2, '2020-01-18', 30),
+(2, '2020-02-11', 80),
+(3, '2020-02-17', 2),
+(3, '2020-02-24', 3),
+(4, '2020-03-01', 20),
+(4, '2020-03-04', 30),
+(4, '2020-03-04', 60),
+(5, '2020-02-25', 50),
+(5, '2020-02-27', 50),
+(5, '2020-03-01', 50);
+
+
+-- Solution:
+
+select p.product_name, sum(unit) total_units
+from prders o
+join products p
+on p.product_id = o.product_id
+where order_date > '2020-02-01' and order_date < '2020-02-28'
+group by p.product_name
+having sum(unit) >= 100;
 
 
 
