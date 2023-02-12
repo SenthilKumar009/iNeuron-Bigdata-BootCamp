@@ -499,3 +499,80 @@ insert into users values
 (7, 'Shapiro', '.shapo@leetcode.com');
 
 select * from users;
+
+SELECT * FROM users WHERE mail LIKE '%_@__%.__%' and substring(mail from 1 for 1) != '.'  
+					and mail not like '%#%'and mail like '%@leetcode.com';
+					
+-- Q28. Write an SQL query to report the customer_id and customer_name of customers who have spent at least $100 in each month of June and July 2020
+
+drop table if exists customers;
+
+create table if not exists customers(
+	customer_id int,
+	name varchar,
+	country varchar,
+	primary key(customer_id)
+);
+
+drop table if exists product1;
+
+create table if not exists product1(
+	product_id int,
+	description varchar,
+	price int,
+	primary key(product_id)
+);
+
+drop table if exists Orders;
+
+create table if not exists Orders(
+	order_id int,
+	customer_id int,
+	product_id int,
+	order_date date,
+	quantity int,
+	primary key(order_id)
+);
+
+-- Data Load
+insert into customers values
+(1, 'Winston', 'USA'),
+(2, 'Jonathan', 'Peru'),
+(3, 'Moustafa', 'Egypt')
+
+insert into product1 values
+(10, 'LC Phone', 300),
+(20, 'LC T-Shirt', 10),
+(30, 'LC Book', 45),
+(40, 'LC Keychain', 2)
+
+insert into orders values
+(1, 1, 10, '2020-06-10', 1),
+(2, 1, 20, '2020-07-01', 1),
+(3, 1, 30, '2020-07-08', 2),
+(4, 2, 10, '2020-06-15', 2),
+(5, 2, 40, '2020-07-01', 10),
+(6, 3, 20, '2020-06-24', 2),
+(7, 3, 30, '2020-06-25', 2),
+(9, 3, 30, '2020-05-08', 3)
+
+-- Solution
+Select * from customers;
+select * from product1;
+select * from orders;
+
+with order_total as
+(
+	select customer_id, sum(p.price * o.quantity) total_price, extract(MONTH from order_date) order_month
+	from product1 p
+	join orders o
+	on p.product_id = o.product_id
+	group by customer_id, order_month
+	order by customer_id, order_month, total_price	
+)
+select distinct c.customer_id, name
+from customers c
+join order_total o
+on c.customer_id = o.customer_id
+where o.order_month = 6 and total_price >= 100 and o.order_month = 7 and total_price >= 100
+
