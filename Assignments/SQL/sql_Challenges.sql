@@ -574,5 +574,60 @@ select distinct c.customer_id, name
 from customers c
 join order_total o
 on c.customer_id = o.customer_id
-where o.order_month = 6 and total_price >= 100 and o.order_month = 7 and total_price >= 100
+where total_price >= 100 and o.order_month in (6,7)
+group by c.customer_id
+having count(c.customer_id) > 1
+
+-- Q29. Write an SQL query to report the distinct titles of the kid-friendly movies streamed in June 2020
+
+-- Create tables:
+
+drop table if exists TVProgram;
+
+create table if not exists TVProgram(
+	program_date date,
+	content_id int,
+	channel varchar,
+	primary key(program_date, content_id)
+);
+
+drop table if exists Contents;
+
+create table if not exists Contents(
+	content_id varchar,
+	title varchar,
+	Kids_content varchar(1),
+	content_type varchar,
+	primary key(content_id)
+);
+
+-- Load data:
+
+insert into tvprogram values
+('2020-06-10 08:00', 1, 'LC-Channel'),
+('2020-05-11 12:00', 2, ' LC-Channel'),
+('2020-05-12 12:00', 3, ' LC-Channel'),
+('2020-05-13 14:00', 4, ' Disney Ch'),
+('2020-06-18 14:00', 4, ' Disney Ch'),
+('2020-07-15 16:00', 5, ' Disney Ch');
+
+insert into contents values
+(1, 'Leetcode Movie', 'N', 'Movies'),
+(2, 'Alg. for Kids', 'Y', 'Series'),
+(3, 'Database Sols', 'N', 'Series'),
+(4, 'Aladdin', 'Y', 'Movies'),
+(5, 'Cinderella', 'Y', 'Movies');
+
+select * from tvprogram;
+select * from contents;
+
+-- Solution:
+select title
+from tvprogram t
+join contents c
+on t.content_id = cast(c.content_id as int)
+where kids_content = 'Y' and t.program_date between '2020-06-01' and '2020-07-01'
+
+
+
 
