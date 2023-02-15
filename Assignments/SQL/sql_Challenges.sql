@@ -628,6 +628,103 @@ join contents c
 on t.content_id = cast(c.content_id as int)
 where kids_content = 'Y' and t.program_date between '2020-06-01' and '2020-07-01'
 
+-- Q30. Write an SQL query to find the npv of each query of the Queries table.
+
+-- Create Table
+
+drop table if exists npv;
+
+create table if not exists npv(
+	id int,
+	year int,
+	npv int,
+	primary key(id, year)
+);
+
+drop table if exists queries;
+
+create table if not exists queries(
+	id int,
+	year int,
+	primary key(id, year)
+);
+
+-- Load data:
+
+insert into npv values
+(1, 2018, 100),
+(7, 2020, 30),
+(13, 2019, 40),
+(1, 2019, 113),
+(2, 2008, 121),
+(3, 2009, 12),
+(11, 2020, 99),
+(7, 2019, 0)
+
+insert into queries values
+(1, 2019),
+(2, 2008),
+(3, 2009),
+(7, 2018),
+(7, 2019),
+(7, 2020),
+(13, 2019);
+
+select * from npv;
+select * From queries;
+
+-- Solution:
+select n.id, n.year, n.npv
+from queries q
+left join npv n
+on n.id = q.id and n.year in (select year from queries where year = n.year)
 
 
+-- Q32. Write an SQL query to show the unique ID of each user, If a user does not have a unique ID replace just show null
 
+drop table if exists employees;
+
+create table if not exists employees (
+	id int,
+	name varchar,
+	primary key(id)
+);
+
+drop table if exists EmployeeUNI;
+
+create table if not exists EmployeeUNI(
+	id int,
+	uniqueid int,
+	primary key(uniqueid)
+);
+
+-- Data Load:
+insert into employees values
+(1, 'Alice'),
+(7, 'Bob'),
+(11, 'Meir'),
+(90, 'Winston'),
+(3, 'Jonathan')
+
+insert into EmployeeUNI values
+(3, 1),
+(11, 2),
+(90, 3);
+
+select uniqueid,
+	   case 
+	   		when e.name is null then 
+				null 
+			else e.name 
+		end as ename
+from employees e 
+left join employeeuni u
+on u.id = e.id
+order by ename asc;
+
+select uniqueid,
+	   name
+from employees e 
+left join employeeuni u
+on u.id = e.id
+where uniqueid is null
