@@ -129,14 +129,13 @@ Q17. What are the two most important concepts to grasp in order to comprehend Py
 
 Q18. Describe three applications for exception processing.
 
-Q19. What happens if you don&#39;t do something extra to treat an exception?
+Q19. What happens if you don't do something extra to treat an exception?
 
 Q20. What are your options for recovering from an exception in your script?
 
 Q21. Describe two methods for triggering exceptions in your script.
 
-Q22. Identify two methods for specifying actions to be executed at termination time, regardless of
-whether or not an exception exists.
+Q22. Identify two methods for specifying actions to be executed at termination time, regardless of whether or not an exception exists.
 
 Q23. What is the purpose of the try statement?
 
